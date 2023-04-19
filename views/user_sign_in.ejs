@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="/css/sign-up.css">
+
+<div class="card">
+    <!-- user signin section , labels and spans used for animation effect. for all inputs. -->
+    <form action="/users/create-session" method="post">
+    
+        <h1>Sign In</h1>
+        
+        <div class="form-control">
+            <input autocomplete="false"  type="text" name="email"  autocomplete="off" required>
+            <label for="userEmail">
+                <span style="transition-delay:0ms">U</span>
+                <span style="transition-delay:50ms">s</span>
+                <span style="transition-delay:100ms">e</span>
+                <span style="transition-delay:150ms">r</span>
+                <span style="transition-delay:200ms">E</span>
+                <span style="transition-delay:250ms">m</span>
+                <span style="transition-delay:300ms">a</span>
+                <span style="transition-delay:325ms">i</span>
+                <span style="transition-delay:350ms">l</span>
+            </label>
+        </div>
+
+        <div class="form-control">
+            <input autocomplete="false"  type="password" name="password" autocomplete="off" required>
+            <label for="userPassword">
+                <span style="transition-delay:0ms">P</span>
+                <span style="transition-delay:50ms">a</span>
+                <span style="transition-delay:100ms">s</span>
+                <span style="transition-delay:150ms">s</span>
+                <span style="transition-delay:200ms">w</span>
+                <span style="transition-delay:250ms">o</span>
+                <span style="transition-delay:300ms">r</span>
+                <span style="transition-delay:350ms">d</span>
+            </label>
+        </div>
+
+        <button type="submit" id="btn" >
+            <span>Submit</span>
+        </button>
+
+    </form>
+</div>

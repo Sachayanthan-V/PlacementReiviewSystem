@@ -1,0 +1,100 @@
+
+
+h1 {
+    padding: 10px 10px 5px 10px;
+    text-align: center;
+
+    a {
+        background-color: red;
+        color: white;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 3px 10px;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: white;
+            color: red;
+        }
+
+    }
+
+}
+
+
+main {
+    display: flex;
+    flex-direction: column !important;
+}
+
+form {
+
+    background-color: #153832;
+    min-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 40px 30px 20px 30px;
+    font-size: 20px;
+    border-radius: 32% 33% 8% 11% / 12% 10% 10% 10% ;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    #studentDetails {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input, label {
+        width: 40%;
+        max-width: 40%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    select {
+        width: 43.5%;
+        background-color: white;
+    }
+
+
+    input, select {
+        font-size: 18px;
+        color: #1b4d45;
+        font-weight: 600;
+    }
+
+    select {
+        font-size: 16px;
+        padding: 0px 1px;
+        margin: 0px 0px 5px 0px;
+    }
+
+    label {
+        background-color: #1b4d45;
+        color: white;
+        font-weight: 600;
+    }
+
+    #submit {
+        margin: 10px 0px 0px 0px;
+        input {
+            font-weight: 700;
+            color: white;
+            background-color: #012f27;
+            border: 0px;
+
+            &:hover {
+                background-color: white;
+                color: #012f27;
+            }
+
+        }
+    }
+
+}

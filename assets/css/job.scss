@@ -1,0 +1,95 @@
+body , main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+form {
+    width: 350px;
+    font-size: 18px;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #141414;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px 0px;
+
+        label {
+            min-width: 130px;
+            font-weight: 600;
+            font-size: 20px;
+            padding: 5px;
+        }
+
+        #colon {
+            margin: 5px;
+            color: brown;
+        }
+
+        input { 
+            min-width: 150px;
+            font-size: 20px;
+            padding: 5px;
+        }
+
+    }
+    
+    a, p {
+        text-decoration: none !important;
+        &:-webkit-any-link {
+            text-decoration: none !important;
+        }
+    }
+
+
+    button {
+        width: 90%;
+        padding: 10px;
+        color: white;
+        background-color: green;
+        text-decoration: none;
+
+        &:hover {
+            background-color: white;
+            color: green;
+        }
+    }
+
+}
+
+.jobforms {
+    min-width: 90% !important;
+}
+
+form button {
+    min-width: 90%;
+}
+
+.assignInterview {
+    padding: 35px;
+    min-width: 450px;
+    select {
+        min-width: 250px;
+        max-width: 300px;
+        font-size: 19px;
+        padding: 10px;
+        margin-left: 5px;
+        option {
+            min-width: 200px;
+            width: fit-content;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 10px;
+        }
+    }
+}

@@ -1,0 +1,6 @@
+/node_modules
+/assets/css/admin.scss
+/assets/css/admin.css.map
+/assets/css/employeeview.scss
+/assets/css/employeeview.css.map
+/package-lock.json

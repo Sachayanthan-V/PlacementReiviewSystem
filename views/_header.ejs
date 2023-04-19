@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/header.css">
+<!-- <link rel="stylesheet" href="/css/sign-up.css">  -->
+
+<% if(locals.user) { %> 
+    <!-- only user logged in -->
+
+    <div id="nav">
+        <div id="logo">
+            <a href="/users">Home</a>
+            <a href="/users/sign-out">Sign Out</a>
+            
+            <div class="dropdown">
+                <button class="dropbtn">Create</button>
+                <div class="dropdown-content">
+                    <a href="/users/student"> Add Student </a>
+                    <a href="/users/registerCompany"> Add Company </a>
+                    <a href="/student/createdummy"> Create DS </a>
+                    <a href="/student/createCompany"> Add Job&Co </a>
+                </div>
+            </div>
+        </div>
+        <div class="userIdHolder">
+            <img src="/images/icons8-name-64.png" alt="">
+            <h1 id="currUserName">  <%= user.name %> </h1>
+        </div>
+    </div>
+
+<% } else { %>
+    <!-- if user not logged in -->
+    
+    <div id="nav">
+        <div id="logo">
+            <a href="/">Home</a>
+            <a href="/users/sign-in">Sign In</a>
+            <a href="/users/sign-up">Sign Up</a>
+        </div>
+    </div>
+
+    
+<% } %> 

@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="/css/profile.css">
+
+
+<div id="profilePage">
+    
+    <div  id="firsthalf">
+        
+        <div> 
+            <h3 class="h3head"> Name </h3>
+            <h3 class="colon"> : </h3>
+            <h3 class="h3value"> <%= student.name  %> </h3>
+        </div>
+        <div> 
+            <h3 class="h3head"> Email </h3>
+            <h3 class="colon"> : </h3>
+            <h3 class="h3value"> <%= student.email  %> </h3>
+        </div>
+        <div> 
+            <h3 class="h3head"> DOB </h3>
+            <h3 class="colon"> : </h3>
+            <h3 class="h3value"> <%= student.dob  %> </h3>
+        </div>
+        <div> 
+            <h3 class="h3head"> Batch </h3>
+            <h3 class="colon"> : </h3>
+            <h3 class="h3value"> <%= student.batch  %> </h3>
+        </div>
+        <div id="sectionalHeads">
+            <h2> Student Details </h2>
+        </div>
+        <div> 
+            <h3 class="h3head"> Qualification </h3>
+            <h3 class="colon"> : </h3>
+            <h3 class="h3value"> <%= student.studentDetails.qualification  %> </h3>
+        </div>
+        <div> 
+            <h3 class="h3head"> College Name </h3>
+            <h3 class="colon"> : </h3>
+            <h3 class="h3value"> <%= student.studentDetails.collegeName  %> </h3>
+        </div>
+        <div> 
+            <h3 class="h3head"> Degree </h3>
+            <h3 class="colon"> : </h3>
+            <h3 class="h3value"> <%= student.studentDetails.degree  %> </h3>
+        </div>
+        <div> 
+            <h3 class="h3head"> Placed </h3>
+            <h3 class="colon"> : </h3>
+            <h3 class="h3value"> <%= student.studentDetails.placed  %> </h3>
+        </div>
+        <div> 
+            <h3 class="h3head"> CGPA </h3>
+            <h3 class="colon"> : </h3>
+            <h3 class="h3value"> <%= student.studentDetails.CGPA  %> </h3>
+        </div>
+        <div id="sectionalHeads">
+            <h2> Course Scores </h2>
+        </div>
+        <div> 
+            <h3 class="h3head"> DSA </h3>
+            <h3 class="colon"> : </h3>
+            <% if ( student.courseScores && student.courseScores.DSA ) { %>
+                <h3 class="h3value"> <%= student.courseScores.DSA %> % </h3>
+            <% } else { %>
+                <form action="/student/updateDsaScore/<%= student._id %>" method="post" >
+                    <input type="number" min="1" max="100" name="uScore" >
+                    <button>Update</button>
+                </form>
+            <% }  %>
+        </div>
+        <div> 
+            <h3 class="h3head"> Web Development </h3>
+            <h3 class="colon"> : </h3>
+            <% if ( student.courseScores && student.courseScores.WebDev ) { %>
+                <h3 class="h3value"> <%= student.courseScores.WebDev %> % </h3>
+            <% } else { %>
+                <form action="/student/updateWebScore/<%= student._id %>" method="post" >
+                    <input type="number" min="1" max="100" name="uScore" >
+                    <button>Update</button>
+                </form>
+            <% }  %>
+        </div>
+        <div> 
+            <h3 class="h3head"> React </h3>
+            <h3 class="colon"> : </h3>
+            <% if ( student.courseScores && student.courseScores.React ) { %>
+                <h3 class="h3value"> <%= student.courseScores.React %> % </h3>
+            <% } else { %>
+                <form action="/student/updateReactScore/<%= student._id %>" method="post" >
+                    <input type="number" min="1" max="100" name="uScore" >
+                    <button>Update</button>
+                </form>
+            <% }  %>
+        </div>
+
+    </div>
+    
+    
+    <div id="secondhalf" class="profileForm">
+        <div class="interviewList">
+            <% if(student.Interviews && student.Interviews.length > 0) { %>
+                
+            <% } else { %>
+                <h1>No Interviews allocated to this person</h1>
+            <% } %>
+        </div>
+        <div class="resultList">
+            <% if(student.Results && student.Results.length > 0) { %>
+                
+            <% } else { %>
+                <h1>No Results published in this profile</h1>
+            <% } %>
+        </div>
+    </div>
+
+</div>

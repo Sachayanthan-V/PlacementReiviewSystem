@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/css/studentView.css">
+
+<ul>
+
+    <% for ( student of studentList ) { %>
+
+        <li>
+            <span class="title"> <%= student.name  %> </span>
+            <a href="student/profile/<%= student.email %>"> ( <%= student.email %> ) </a> 
+        </li>
+
+    <% } %>
+
+</ul>

@@ -1,0 +1,64 @@
+main {
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+  display: flex !important;
+  margin: 5px 0px !important;
+  padding: 0px !important;
+}
+
+body {
+  justify-content: start !important;
+}
+
+#studentsSection {
+  display: block;
+}
+#studentsSection li {
+  background-color: #141414;
+  margin: 10px 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#studentsSection li a {
+  text-decoration: none;
+  color: #e52e71;
+}
+#studentsSection li span {
+  min-width: 250px;
+}
+#studentsSection li span:hover {
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  text-shadow: none;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#studentsSection {
+  border-right: 1px solid white;
+}
+
+#studentsSection, #jobSection {
+  overflow: scroll;
+}
+#studentsSection::-webkit-scrollbar, #jobSection::-webkit-scrollbar {
+  display: none;
+}
+
+li {
+  margin-left: 30px;
+  font-size: 18px;
+  padding: 10px;
+}
+
+ol li::marker {
+  content: initial;
+  color: red;
+  font-size: 1.5em;
+}
+
+#addStudentDiv {
+  padding: 10px;
+  margin: 10px;
+}/*# sourceMappingURL=studentView.css.map */

@@ -1,0 +1,53 @@
+<!-- Importing required styling sheets -->
+
+<link rel="stylesheet" href="/css/home.css"> 
+<link rel="stylesheet" href="/css/justsignin.css">
+<link rel="stylesheet" href="/css/sign-up.css">
+
+
+<!-- Home page main section to hold everything inside it. create for hide scrollbar with scroll events -->
+
+
+<!-- Show only user is logged in using passport -->
+<%  if(locals.user) { %>
+
+    
+
+    <section id="studentsSection">
+        
+        <h1>Student List </h1>
+        
+        <div id="studentsList">
+            <%- include('student'); %>
+        </div>
+        
+    </section>
+    <section id="jobSection">
+        
+        <h1>Company List </h1>
+        
+        <div id="companyList">
+            <%- include('companylist'); %>
+        </div>
+
+    </section>
+
+
+<!-- request user to login If they didn't at start  -->
+<% } else { %>
+
+    <h1 class="request">Please <a href="/users/sign-in"> Sign In </a> or <a href="/users/sign-up"> register </a> to Continue</h1>
+
+<% } %>
+
+
+<!-- Importing required scripts -->
+
+
+<script>
+    // script for no action 
+    function noaction(){
+        return false
+    }
+
+</script>

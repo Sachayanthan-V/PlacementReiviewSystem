@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/css/company.css">
+
+<ul>
+    <% for (company of companyList) { %>
+        <li>
+            <h2> <%= company.Company.name %> <span> <a href="/job/jobform/<%= company.Company._id %>"> Post Job </a> </span> <form class="NoStyleForm" method="post" action="/job/deleteCompany/<%= company.Company.id %>"> <button type="submit">Delete</button> </form> </h2>
+            <% if ( company.cc && company.cc.length ) { %>
+                <div class="job">
+                    <% for (job of company.cc) { %>
+                        <div class="content">
+                            <div class="formClass">
+                                
+                                <form class="jobforms" action="job/Delete/<%= job.ID %>" method="post">
+                                    <input style="display: none;" type="text" value="<%= company.Company._id %>" name="companyID">
+                                    <input style="display: none;" type="text" value="<%= job.ID %>" name="jobID">
+                                    <button type="submit"> DELETE </button>
+                                </form>
+                                
+                                <form class="jobforms" action="job/Assign/<%= job.ID %>" method="post">
+                                    <input style="display: none;" type="text" value="<%= company.Company._id %>" name="companyID">
+                                    <input style="display: none;" type="text" value="<%= job.ID %>" name="jobID">
+                                    <button type="submit"> Student Assign </button>
+                                </form>
+                            
+                            </div>
+                            
+                            <h2> <%= job.position %> </h2>
+                            <span> CTC : <%= job.CTC %> </span>
+                        
+                        </div>
+                    <% } %>
+                </div>
+            <% } else  { %>
+                <div class="nojob"> <h3> No Job posted from this company </h3> </div>
+            <% } %>
+        </li>
+    <% } %>
+</ul>
+
+
+<script>
+
+    function deleteJob() {
+        document.getElementById("submitjobdelete").click();
+    }
+
+
+</script>

@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/css/addemployee.css">
+
+<h1>
+    Student Form 
+    <a href="/users"> X </a>
+</h1>
+
+<form action="/users/addStudent" method="post">
+    <div>
+        <label for="name"> Student Name </label>
+        <p> : </p>
+        <input type="text" name="name">
+    </div>
+    <div>
+        <label for="email"> Student Email </label>
+        <p> : </p>
+        <input type="email" name="email">
+    </div>
+    <div>
+        <label for="dob"> Date of Birth </label>
+        <p> : </p>
+        <input type="date" name="dob">
+    </div>
+    <div>
+        <label for="batch"> Batch </label>
+        <p> : </p>
+        <input type="date" name="batch">
+    </div>
+    <div id="studentDetails">
+        <div>
+            <label for="qualification"> Qualification </label>
+            <p> : </p>
+            <input type="text" name="qualification">
+        </div>
+        <div>
+            <label for="collegeName"> College Name </label>
+            <p> : </p>
+            <input type="text" name="collegeName">
+        </div>
+        <div>
+            <label for="degree"> Degree </label>
+            <p> : </p>
+            <input type="text" name="degree">
+        </div>
+        <div>
+            <label for="placed"> Placed </label>
+            <p> : </p>
+            <select name="placed" id="">
+                <option value="onCampus">On Campus</option>
+                <option value="offCampus">Off Campus</option>
+                <option value="notPlaced">Not placed</option>
+            </select>
+        </div>
+        <div>
+            <label for="cgpa"> CGPA </label>
+            <p> : </p>
+            <input type="number" name="cgpa">
+        </div>
+    </div>
+    <div id='submit'>
+        <input type="submit">
+    </div>
+</form>

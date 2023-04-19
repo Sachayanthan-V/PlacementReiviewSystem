@@ -1,0 +1,198 @@
+###########################   USER :  #############################################################
+
+    name                            : 
+    email                           : 
+    password                        : 
+
+###########################   Company :  ##########################################################
+
+    name                            : 
+    jobTitle                        : 
+    SelectedCanditates              : 
+
+###########################   STUDENTS : ##########################################################
+{
+    name                            : { type : String, required : true, } , 
+    email                           : { type : String, required : true, } , 
+    batch                           : { type : String, required : true, } , 
+    studentDetails.qualification    : { type : String, required : true, } , 
+    studentDetails.collegeName      : { type : String, required : true, } , 
+    studentDetails.degreeCourse     : { type : String, required : true, } , 
+    studentDetails.placed           : { type : String, required : true, } , 
+    studentDetails.CGPA             : { type : String, required : true, } , 
+    courseScores.DSA                : { type : String, required : true, } , 
+    courseScores.WebDev             : { type : String, required : true, } , 
+    courseScores.React              : { type : String, required : true, } , 
+    Interviews                      : [ ] ,
+    Results                         : [ ] 
+}
+#####################################################################################################
+
+
+
+A company constantly needs to download their data to compile different reports. You need to create an
+interface for the employees of this company to fill in the data into the database and then download it
+in CSV format.
+
+Create a complete web application, not an API
+
+If you dont know whats a CSV, google it.
+Extra Points:
+- Well commented code
+- Readme on how to setup the project on local system
+- Scaleable folder structure (separate models, controllers and routes)
+- Clean looking pages 
+Task 
+- Team Career Camp wants to maintain a database of all the student interviews [only for their own 
+use], for this they store the following details: 
+- Batch 
+- Student Details (including college, status: [placed, not_placed])
+- Course Scores (including DSA Final Score, WebD Final Score, React Final Score)
+- Interviews (including company name and Date)
+- Results (this is a mapping between company, and student, contains result: [PASS, FAIL, On Hold, Didn’t Attempt])
+
+- Pages
+- Sign Up and Sign In only for employees
+- List of students + add new student (this is similar to adding and viewing posts in codeial)
+- List of Interviews + form to create an interview (with date)
+- Allocate a student to an interview
+- Select an interview to view the list of all students and mark a result status from the list page itself
+
+- [BONUS FEATURE] External Jobs List:
+- Create a page which fetches real available jobs in India for react/node.js. Find and
+use open APIs [example: https://jobs.github.com/api, find at least one more, you can cheat!]
+- The API request should be handled from your node.js server
+- The design of this page should be minimalistic
+- Link to apply would be an external link, so dont worry about creating
+models/controllers/views for any part on this page
+- Download a complete CSV of all the data with the following columns:
+- Student id, student name, student college, student status, DSA Final Score, WebD Final
+Score, React Final Score, interview date, interview company, interview student result
+- A student can have multiple entries based on the interviews she/he has given.
+
+
+
+
+
+
+        <!-- <div id="student">
+
+            <div id="basicStudentDetails">
+
+                <div class="studentName">
+                    <label class="name"> Student Name </label>
+                    <p> : </p>
+                    <h3> <%= student.name  %> </h3>
+                </div>
+            
+                <div class="StudentEmail">
+                    <label class="email"> Student Email </label>
+                    <p> : </p>
+                    <h3> <%= student.email  %> </h3>
+                </div>
+                <div class="StudentDOB"> 
+                    <label class="dob"> Date of Birth </label>
+                    <p> : </p>
+                    <h3> <%= student.dob  %> </h3>
+                </div>
+                <div class="StudentBatch">
+                    <label class="batch"> Batch </label>
+                    <p> : </p>
+                    <h3> <%= student.batch  %> </h3>
+                </div>
+
+            </div>
+
+            <div id="studentDetails">
+                <div>
+                    <label class="qualification"> Qualification </label>
+                    <p> : </p>
+                    <h3> <%= student.studentDetails.qualification  %> </h3>
+                </div>
+                <div>
+                    <label class="collegeName"> College Name </label>
+                    <p> : </p>
+                    <h3> <%= student.studentDetails.collegeName %> </h3>
+                </div>
+                <div>
+                    <label class="degree"> Degree </label>
+                    <p> : </p>
+                    <h3> <%= student.studentDetails.degree %> </h3>
+                </div>
+                <div>
+                    <label class="placed"> Placed </label>
+                    <p> : </p>
+                    <h3> <%= student.studentDetails.placed %> </h3>
+                </div>
+                <div>
+                    <label class="cgpa"> CGPA </label>
+                    <p> : </p>
+                    <h3> <%= student.studentDetails.CGPA  %> </h3>
+                </div>
+            </div>
+
+            <div id="CourseDetails">
+                
+                <div>
+                    <label class="DSA" name="DSA"> DSA </label>
+                    <p> : </p>
+                    <% if( student.courseScores && student.courseScores.DSA ) { %>
+                        <h3> <%= student.courseScores.DSA  %> </h3>
+                    <% } else { %>
+                        <input type="text" name="DSA">
+                    <% } %>
+                </div>
+                <div>
+                    <label class="WEBDEV" for="WebDev"> Web Dev </label>
+                    <p> : </p>
+                    <% if( student.courseScores && student.courseScores.WebDev ) { %>
+                        <h3> <%= student.courseScores.WebDev  %> </h3>
+                    <% } else { %>
+                        <input type="text" name="WebDev">
+                    <% } %>
+                </div>
+                <div>
+                    <label class="REACT" for="React" > REACT </label>
+                    <p> : </p>
+                    <% if( student.courseScores && student.courseScores.React ) { %>
+                        <h3> <%= student.courseScores.React  %> </h3>
+                    <% } else { %>
+                        <input type="number" name="React">
+                    <% } %>
+                </div>
+
+            </div>
+
+            <div id="listOfInterviews">
+        
+                <% if ( student.Interviews && student.Interviews.length > 0 ) { %>
+        
+                    <% for ( interview of student.Interviews ) { %>
+                        <h3> Interview allocated </h3>
+                    <% } %>
+        
+                <% } else  { %>
+        
+                    <h3>No Interviews allocated to you still !..</h3>
+        
+                <% } %>
+        
+            </div>
+            
+            <div id="listOfResults">
+        
+                <% if ( student.Results && student.Results.length > 0 ) { %>
+                    
+                    <% for ( interview of student.Results ) { %>
+                        <h3> Results </h3>
+                    <% } %>
+        
+                <% } else  { %>
+        
+                    <h3>No Interviews attended </h3>
+        
+                <% } %>
+        
+            </div>
+
+        </div> -->
