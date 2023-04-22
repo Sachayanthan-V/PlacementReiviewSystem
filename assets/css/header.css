@@ -2,7 +2,7 @@
   font-family: Times;
 }
 
-body {
+body, main, #nav {
   min-width: 1500px;
 }
 

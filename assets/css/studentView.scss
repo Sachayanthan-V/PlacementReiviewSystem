@@ -21,11 +21,25 @@ body {
         margin: 10px 5px;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         align-items: center;
         
         a {
             text-decoration: none;
             color: #e52e71;
+        }
+
+        .DELETESTUDENT {
+            padding: 5px 10px;
+            text-decoration: none;
+            background-color: red;
+            color: white;
+            font-weight: 600;
+            border-radius: 4px;
+            &:hover {
+                background-color: white;
+                color: red;
+            }
         }
 
         span {
@@ -44,6 +58,8 @@ body {
     }
 
 }
+
+
 
 #studentsSection {
     border-right: 1px solid white;

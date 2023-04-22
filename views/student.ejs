@@ -7,6 +7,7 @@
         <li>
             <span class="title"> <%= student.name  %> </span>
             <a href="student/profile/<%= student.email %>"> ( <%= student.email %> ) </a> 
+            <a class="DELETESTUDENT" href="student/deleteStudent/<%= student.email %>">X</a>
         </li>
 
     <% } %>

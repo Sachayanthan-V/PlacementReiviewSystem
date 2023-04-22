@@ -18,11 +18,24 @@ body {
   margin: 10px 5px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 }
 #studentsSection li a {
   text-decoration: none;
   color: #e52e71;
+}
+#studentsSection li .DELETESTUDENT {
+  padding: 5px 10px;
+  text-decoration: none;
+  background-color: red;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+}
+#studentsSection li .DELETESTUDENT:hover {
+  background-color: white;
+  color: red;
 }
 #studentsSection li span {
   min-width: 250px;

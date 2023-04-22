@@ -250,3 +250,17 @@ module.exports.AssignJob = async function(req, res) {
             });
 
 }
+
+module.exports.DeleteStudent = async function(req, res) {
+
+    await Student.findOneAndDelete({email : req.params.id})
+                .then((deletedUser)=>{
+                    console.log(`Deleted USER : ${deletedUser.name}`);
+                    return res.redirect('back');
+                })
+                .catch((err)=>{
+                    console.log(`Error during deleting a student :: \n${err}`);
+                    return res.redirect('back');
+                });
+
+}
