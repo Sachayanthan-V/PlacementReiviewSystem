@@ -4,17 +4,23 @@ const Job     = require('../models/job');
 
 module.exports.createJob = async function(req, res) {
 
+    
+
+    let companyID = req.params.id ;
+    
+    let companyName = await Company.findById(companyID).then((c)=>{ return c.name })
+
     let newjob = {
-                    position : req.body.position,
-                    selectedStudents : [],
-                    CTC : req.body.CTC
-                }
+        position : req.body.position,
+        selectedStudents : [],
+        CTC : req.body.CTC, 
+        companyName : companyName
+    }
 
     await Job.create(newjob)
             .then( (newJob) => {
                 console.log(`New Job created :: \n ${newJob}`);
-
-                let companyID = req.params.id ;
+                
                 console.log("Company ID :: => ::",companyID);
 
                 Company.findByIdAndUpdate(companyID, { $push: { jobs : newJob.id } })
@@ -152,8 +158,142 @@ module.exports.AssignJobForm = async function(req, res) {
                     })
                  })
                  .catch((err)=>{
-                    console.log(`Error while collecting students list ::: \n${err}`);
+                    // console.log(`Error while collecting students list ::: \n${err}`);
                     return res.redirect('back');
                  });
+
+}
+
+module.exports.acceptJob = async function(req, res) {
+
+    let jobID = req.params.id;
+    let email = req.params.email;
+    let studentName = '';
+    let studentDetails;
+    let jobDetails;
+    let resultList = [];
+    let StudentID ;
+
+    await Student.find({email : email})
+                 .then((user)=>{
+
+                    user = user[0];
+
+                    StudentID = user._id;
+                    studentName = user.name;
+ 
+                    studentDetails = {
+                        name  : studentName,
+                        ID    : StudentID,
+                        email : email,
+                    }
+                    
+                    if(user.Results){
+                        resultList = user.Results;
+                    }
+                    resultList.push(jobID);
+
+                    let InterviewList = user.Interviews;
+                    InterviewList.remove(jobID);
+
+                    Student.findOneAndUpdate({email : email}, { Interviews : InterviewList})
+                            .then((updatedUser)=>{ console.log(`Updated User :: ${updatedUser}`); })
+                            .catch((error)=>{ console.log(`Error during updating student by result`); });
+
+                 });
+
+    await Job.findById(jobID)
+                .then((job)=>{
+                    let selectedStudents = []
+                    jobDetails = {
+                        companyName : job.companyName ,
+                        position : job.position,
+                        CTC : job.CTC,
+                        Status : "SELECTED"
+                    }
+                    if(job.selectedStudents) {
+                        selectedStudents = job.selectedStudents;
+                    }
+                    selectedStudents.push(studentDetails);
+                    Job.findByIdAndUpdate(jobID, {selectedStudents : selectedStudents})
+                        .then( (updatedJob) => { /*console.log(`Updated job :: \n ${updatedJob}`);*/ })
+                        .catch( (err) => { console.log(`Updating job with selected students Error :: \n ${err}`); } )
+                });
+
+    await Student.findById(StudentID)
+                 .then((currentStudent)=>{
+                    let results = []
+                    if(currentStudent.Results){
+                        results = currentStudent.Results;
+                    }
+                    console.log(results);
+                    results.push(jobDetails);
+                    console.log(results);
+                    Student.findByIdAndUpdate(StudentID, { Results : results })
+                           .then((studentResults)=>{
+                                console.log(studentResults);
+                           })
+                           .catch((err)=>{
+                                console.log(err);
+                           })
+                })
+
+    return await res.redirect('back');
+
+}
+
+module.exports.declineJob = async function(req, res) {
+    
+    let jobID = req.params.id;
+    let email = req.params.email;
+    let jobDetails;
+    let resultList = [];
+    let StudentID ;
+
+    await Student.find({email : email})
+                 .then((user)=>{
+
+                    user = user[0];
+                    StudentID = user._id;
+
+                    if(user.Results){
+                        resultList = user.Results;
+                    }
+                    resultList.push(jobID);
+
+                    let InterviewList = user.Interviews;
+                    InterviewList.remove(jobID);
+
+                    Student.findByIdAndUpdate( StudentID , { Interviews : InterviewList})
+                            .then((updatedUser)=>{ console.log(`Updated User :: ${updatedUser}`); })
+                            .catch((error)=>{ console.log(`Error during updating student by result`); });
+
+                 });
+
+    await Job.findById(jobID)
+                .then((job)=>{
+                    jobDetails = {
+                        companyName : job.companyName ,
+                        position : job.position,
+                        CTC : job.CTC,
+                        Status : "REJECTED"
+                    }
+                });
+
+    await Student.findById(StudentID)
+                 .then((currentStudent)=>{
+                    let results = []
+                    if(currentStudent.Results){
+                        results = currentStudent.Results;
+                    }
+                    console.log(results);
+                    results.push(jobDetails);
+                    console.log(results);
+                    Student.findByIdAndUpdate(StudentID, { Results : results })
+                           .then((studentResults)=> { console.log(studentResults); })
+                           .catch((err)=>{ console.log(err); })
+                })
+
+    return await res.redirect('back');
 
 }

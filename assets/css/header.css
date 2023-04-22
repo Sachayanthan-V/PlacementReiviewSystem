@@ -2,6 +2,10 @@
   font-family: Times;
 }
 
+body {
+  min-width: 1500px;
+}
+
 #nav {
     min-height: 8vh;
     width: 100vw;

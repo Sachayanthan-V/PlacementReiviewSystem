@@ -20,7 +20,7 @@
   width: 98%;
   overflow: hidden;
 }
-#jobSection #companyList ul li h2 {
+#jobSection #companyList ul li #headerCompany {
   background-color: #141414;
   padding: 5px;
   min-width: 100%;
@@ -28,19 +28,27 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
-#jobSection #companyList ul li h2 span {
+#jobSection #companyList ul li #headerCompany h2 {
+  min-width: 50%;
+}
+#jobSection #companyList ul li #headerCompany span {
   background-color: #451023;
   color: white;
   border-radius: 3px;
+  padding: 5px 10px;
   margin-left: 20px;
   margin-right: 30px;
 }
-#jobSection #companyList ul li h2 span:hover {
+#jobSection #companyList ul li #headerCompany span:hover {
   background-color: white;
   color: #e52e71;
 }
-#jobSection #companyList ul li h2 span a {
+#jobSection #companyList ul li #headerCompany span:hover a {
+  color: #e52e71;
+}
+#jobSection #companyList ul li #headerCompany span a {
   text-align: center;
   font-size: 18px;
   text-decoration: none;
@@ -49,7 +57,7 @@
   padding: 3px;
   color: white;
 }
-#jobSection #companyList ul li h2 span a:hover {
+#jobSection #companyList ul li #headerCompany span a:hover {
   color: #e52e71;
 }
 #jobSection #companyList ul li .job {

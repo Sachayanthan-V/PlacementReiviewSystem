@@ -98,19 +98,66 @@
     
     <div id="secondhalf" class="profileForm">
         <div class="interviewList">
-            <% if(student.Interviews && student.Interviews.length > 0) { %>
-                
+
+            <% if(interviews && interviews.length > 0) { %>
+
+                <ol id="rowflexol">
+                    
+                    <h1> $ ACTIVE INTERVIEW $ </h1>
+
+                    <% for ( interview of interviews ) { %>
+                        <% if( interview) { %>
+                            
+                            <li>
+                                <h2> <%= interview.position %> post from <%= interview.companyName %> with CTC : <%= interview.CTC %> </h2>
+                                <div class="ADChoose">
+                                    <a class="AccentLink" href="/job/acceptJob/<%= interview.ID %>&<%= student.email %>"> Accept  </a>
+                                    <a class="DeclineLink" href="/job/declineJob/<%= interview.ID %>&<%= student.email %>"> Decline </a>
+                                </div>
+                            </li>
+                            
+                        <% } %>
+                    <% } %>
+                                     
+                </ol>
+
             <% } else { %>
-                <h1>No Interviews allocated to this person</h1>
+                <div class="CENTERDIV">
+                    <h1>No Interviews allocated to this person</h1>
+                </div>
             <% } %>
         </div>
         <div class="resultList">
             <% if(student.Results && student.Results.length > 0) { %>
-                
+                <ol id="rowflexol">
+                    
+                    <h1> $ INTERVIEW RESULT $ </h1>
+
+                    <% for ( res of student.Results ) { %>
+                        <% if( res) { %>
+                            
+                            <li>
+                                <h2> <%= res.position %> from <%= res.companyName %> with CTC : <%= interview.CTC %> </h2>
+                                <div class="ADChoose">
+                                    <% if ( res.Status === "SELECTED" ) { %>
+                                        <p class="SELECTED"> SELECTED </p>
+                                    <% } else { %>
+                                        <p class="REJECTED"> REJECTED </p>
+                                    <% } %>
+                                </div>
+                            </li>
+                            
+                        <% } %>
+                    <% } %>
+                                     
+                </ol>
             <% } else { %>
-                <h1>No Results published in this profile</h1>
+                <div class="CENTERDIV">
+                    <h1>No Results published in this profile</h1>
+                </div>
             <% } %>
         </div>
     </div>
 
 </div>
+

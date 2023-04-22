@@ -3,7 +3,13 @@
 <ul>
     <% for (company of companyList) { %>
         <li>
-            <h2> <%= company.Company.name %> <span> <a href="/job/jobform/<%= company.Company._id %>"> Post Job </a> </span> <form class="NoStyleForm" method="post" action="/job/deleteCompany/<%= company.Company.id %>"> <button type="submit">Delete</button> </form> </h2>
+            <div id="headerCompany">
+                <h2> <%= company.Company.name %> </h2>
+                <span> <a href="/job/jobform/<%= company.Company._id %>"> Post Job </a> </span> 
+                <form class="NoStyleForm" method="post" action="/job/deleteCompany/<%= company.Company.id %>"> 
+                    <button type="submit">Delete</button> 
+                </form> 
+            </div>
             <% if ( company.cc && company.cc.length ) { %>
                 <div class="job">
                     <% for (job of company.cc) { %>

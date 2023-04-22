@@ -21,23 +21,33 @@
         ul li {
             width: 98%;
             overflow: hidden;
-            h2 {
+            #headerCompany {
                 background-color: #141414;
                 padding: 5px;
                 min-width: 100%;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                justify-content: center;
+                justify-content: center ;
+                text-align: center;
+
+                h2 {
+                    min-width: 50%;
+                }
+
                 span {
                     background-color: #451023;
                     color: white;
                     border-radius: 3px;
+                    padding: 5px 10px;
                     margin-left: 20px;
                     margin-right: 30px;
                     &:hover {
                         background-color: white;
                         color: #e52e71;
+                        a { 
+                            color: #e52e71;
+                        }
                     }
 
                     a {

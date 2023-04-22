@@ -61,23 +61,60 @@ module.exports.addStudent = async function(req, res) {
     return res.redirect('back');
 }
 
+async function returnStudentWithInterviews(user) {
+
+    if(user.Interviews && user.Interviews.length){
+
+        var interviewList = []
+
+        for ( interview of user.Interviews ) {
+
+            // console.log(interview)
+
+            await Job.findById(interview)
+                    .then((job)=>{
+                        let newObj = { ID: job._id, position : job.position, CTC : job.CTC, companyName : job.companyName }
+                        interviewList.push(newObj);
+                    })
+                    .catch( (err)=>{
+                        // console.log(`Error during finding job Details in students`);
+                        return null
+                    });
+        
+        }
+
+        return interviewList
+
+    }else {
+        return [];
+    }
+
+}
+
 module.exports.studentProfile = async function(req, res) {
 
     let userEmail = req.params.id;
-    console.log(userEmail);
+    // console.log(userEmail);
 
-    await Student.findOne({email : userEmail})
-            .then( (user) => {
-                return res.render('profile', {
-                    title : 'profile page',
-                    student : user
+    let user = await Student.findOne({email : userEmail})
+                .then( (user) => {
+                    return user;
                 })
-            })
-            .catch((err)=> {
-                console.log(`Error during profile for the USER ${userEmail} :: \n ${err}`);
-                return res.redirect('back');
-            });
+                .catch((err)=> {
+                    // console.log(`Error during profile for the USER ${userEmail} :: \n ${err}`);
+                    return res.redirect('back');
+                });
 
+    let newUser = await returnStudentWithInterviews(user);
+
+    // console.log("NEWUSER",newUser);
+
+    return res.render('profile', {
+        title : 'profile page',
+        student : user,
+        interviews : newUser
+    });
+            
 }
 
 module.exports.DSAScore = async function(req, res) {

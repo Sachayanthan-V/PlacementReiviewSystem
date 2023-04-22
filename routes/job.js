@@ -12,6 +12,8 @@ router.post('/deleteCompany/:id' , passport.checkAuthentication, JobController.D
 router.post('/createCompany/' , passport.checkAuthentication, JobController.CreateCompany );
 router.post('/Assign/:id' , passport.checkAuthentication, JobController.AssignJobForm );
 router.get('/Assign/*' , passport.checkAuthentication, HomeController.userHome );
+router.get('/acceptJob/:id&:email', passport.checkAuthentication, JobController.acceptJob );
+router.get('/declineJob/:id&:email', passport.checkAuthentication, JobController.declineJob );
 
 
 module.exports = router;

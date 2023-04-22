@@ -93,3 +93,37 @@ form button {
         }
     }
 }
+
+#absoluteBtn {
+    position: absolute;
+    top: 12vh;
+    left: auto;
+    right: 20px;
+    bottom: auto;
+    padding: 20px;
+    font-size: 22px;
+    background-color: red;
+    color: white;
+    transition: all 0.3s linear;
+    animation: HoverEffect;
+    border-radius: 10px;
+    font-weight: 700;
+
+    &:hover {
+        background-color: white;
+        color: red;
+    }
+    
+}
+
+
+@keyframes HoverEffect {
+    0% {
+        background-color: red;
+        color: white;
+    }
+    100% {
+        background-color: white;
+        color: red;
+    }
+}
