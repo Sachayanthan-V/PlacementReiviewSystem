@@ -32,14 +32,14 @@ app.set("views", "./views");
 
 // to create a new session for users
 app.use( session({
-    name: "ERS",
-    secret: "blahsomething",
+    name: "PlacementCell",
+    secret: "Jdksn%392437nMbsdf",
     saveUninitialized: false,
     resave: false,
     cookie: { maxAge: 1000 * 60 * 100 },
     store: MongoStore.create({
-          // mongoUrl: "mongodb+srv://sachayanthanv1999:JxeAWchTq21VaerQ@cluster0.ajh9ftk.mongodb.net/?retryWrites=true&w=majority",
-          mongoUrl: "mongodb://127.0.0.1:27017/placementCell",
+          mongoUrl: "mongodb+srv://sachayanthanv1999:JxeAWchTq21VaerQ@cluster0.ajh9ftk.mongodb.net/?retryWrites=true&w=majority",
+          // mongoUrl: "mongodb://127.0.0.1:27017/placementCell",
           autoremove: "disabled",
         },
           function (err) { console.log("error at mongo store", err || "connection established to store cookie" ); }

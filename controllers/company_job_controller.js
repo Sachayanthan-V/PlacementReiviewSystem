@@ -2,6 +2,8 @@ const Student = require('../models/student');
 const Company = require('../models/company');
 const Job     = require('../models/job');
 
+
+// create a job in job models, and add the jobid, into respective company
 module.exports.createJob = async function(req, res) {
 
     
@@ -41,6 +43,7 @@ module.exports.createJob = async function(req, res) {
 
 }
 
+// forward/render to jobform page
 module.exports.jobForm = async function(req, res) {
 
     return res.render('post_job', {
@@ -50,6 +53,7 @@ module.exports.jobForm = async function(req, res) {
 
 }
 
+// delete a job as well as deleting a job under the company which is holding that job
 module.exports.DeleteJob = async function(req, res) {
 
     console.log(`Entered in DeleteJob`)
@@ -76,6 +80,7 @@ module.exports.DeleteJob = async function(req, res) {
 
 }
 
+// deleting a company from DB
 module.exports.DeleteCompany = async function(req, res) {
     console.log(`Entered Delete company === ${req.params.id} `);
 
@@ -104,6 +109,7 @@ module.exports.DeleteCompany = async function(req, res) {
 
 }
 
+// create a company with requirements
 module.exports.CreateCompany = async function(req, res) {
     
     let companyName = req.body.name ;
@@ -139,6 +145,7 @@ module.exports.CreateCompany = async function(req, res) {
 
 }
 
+// forward/render to register form for company
 module.exports.RegisterCompany = async function(req, res) {
 
     return res.render('post_company', {
@@ -147,6 +154,7 @@ module.exports.RegisterCompany = async function(req, res) {
 
 }
 
+// forward/render to form for student assign to job 
 module.exports.AssignJobForm = async function(req, res) {
 
     await Student.find({})
@@ -164,6 +172,8 @@ module.exports.AssignJobForm = async function(req, res) {
 
 }
 
+// Student when accepted the job and he must be selected by the interview, 
+// and results will show the job is selected for the particular student
 module.exports.acceptJob = async function(req, res) {
 
     let jobID = req.params.id;
@@ -242,6 +252,8 @@ module.exports.acceptJob = async function(req, res) {
 
 }
 
+// Student when declined the job and he must be rejected by the interview, 
+// and results will show the job is Rejected for the particular student
 module.exports.declineJob = async function(req, res) {
     
     let jobID = req.params.id;

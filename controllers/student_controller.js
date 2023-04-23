@@ -1,13 +1,14 @@
 const Student = require('./../models/student');
 const Job     = require('./../models/job');
 
-
+// open student form page
 module.exports.studentForm = async function(req, res) {
-    return res.render('add_employee.ejs', {
+    return res.render('add_student.ejs', {
         title : "Student Form"
     });
 }
 
+// opening a student register form
 module.exports.addStudent = async function(req, res) {
 
     let studentDetails = {
@@ -61,6 +62,8 @@ module.exports.addStudent = async function(req, res) {
     return res.redirect('back');
 }
 
+// returns a interviews and the job informations which 
+// the particular student is having in his/her list
 async function returnStudentWithInterviews(user) {
 
     if(user.Interviews && user.Interviews.length){
@@ -91,6 +94,7 @@ async function returnStudentWithInterviews(user) {
 
 }
 
+// student profile page with every single detail rendering
 module.exports.studentProfile = async function(req, res) {
 
     let userEmail = req.params.id;
@@ -117,6 +121,7 @@ module.exports.studentProfile = async function(req, res) {
             
 }
 
+// updating a DSA SCORE for the particular student
 module.exports.DSAScore = async function(req, res) {
 
     let score = req.body.uScore;
@@ -144,6 +149,7 @@ module.exports.DSAScore = async function(req, res) {
 
 }
 
+// updating a Web Development SCORE for the particular student
 module.exports.WebScore = async function(req, res) {
     let score = req.body.uScore;
 
@@ -171,6 +177,7 @@ module.exports.WebScore = async function(req, res) {
         
 }
 
+// updating a React SCORE for the particular student
 module.exports.ReactScore = async function(req, res) {
     let score = req.body.uScore;
 
@@ -198,6 +205,7 @@ module.exports.ReactScore = async function(req, res) {
 
 }
 
+// Assigning the particular student to particular job under particular company
 module.exports.AssignJob = async function(req, res) {
 
     console.log(`Entered to the Assign job`);
@@ -251,6 +259,7 @@ module.exports.AssignJob = async function(req, res) {
 
 }
 
+// Delete the particular student if student is relieved from our placement system.
 module.exports.DeleteStudent = async function(req, res) {
 
     await Student.findOneAndDelete({email : req.params.id})

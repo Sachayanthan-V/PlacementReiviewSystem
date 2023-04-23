@@ -18,6 +18,8 @@ h1 a:hover {
 main {
   display: flex;
   flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
 }
 
 form {
@@ -77,4 +79,9 @@ form #submit input {
 form #submit input:hover {
   background-color: white;
   color: #012f27;
+}
+
+#studentFormFixWidth {
+  min-width: 900px;
+  max-width: 900px;
 }/*# sourceMappingURL=addemployee.css.map */

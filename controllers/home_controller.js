@@ -1,8 +1,9 @@
 const Company = require('../models/company');
 const Student = require('../models/student');
-const User = require('../models/user');
 const Job = require('../models/job');
 
+
+// render the home page with student and company details only if they logged in, else render login page
 module.exports.home = async function (req, res) {
 	try {
 		return res.render('home', {
@@ -13,6 +14,7 @@ module.exports.home = async function (req, res) {
 	}
 };
 
+// function for sending informations jobs for specific company, its called by userHome function 
 async function returnCompany(company){
 
 	let returnCompany = []
@@ -58,6 +60,7 @@ async function returnCompany(company){
 
 }
 
+// userHome is the function to render home page only the user is logged in
 module.exports.userHome = async function (req, res) {
 	try {
 		// console.log("Check IT :: \n ", students);

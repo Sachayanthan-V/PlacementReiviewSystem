@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Schema for Job
 const jobSchema = mongoose.Schema({
 
     position : {

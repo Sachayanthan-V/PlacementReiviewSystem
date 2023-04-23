@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Schema for Company
 const companySchema = mongoose.Schema({
 
     name : {

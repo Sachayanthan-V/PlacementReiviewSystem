@@ -25,6 +25,8 @@ h1 {
 main {
     display: flex;
     flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
 }
 
 form {
@@ -98,3 +100,9 @@ form {
     }
 
 }
+
+
+#studentFormFixWidth {
+    min-width: 900px;
+    max-width: 900px;
+}  
